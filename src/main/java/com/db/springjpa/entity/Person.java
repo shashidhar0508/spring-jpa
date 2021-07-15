@@ -1,11 +1,38 @@
 package com.db.springjpa.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
+
+@Entity
+@Table(name = "person_details")
 public class Person {
-    int id;
-    String name;
-    int age;
+
+    @Id
+    @GeneratedValue
+    private int id;
+    private String name;
+    private String location;
+    private Date birthDate;
 
     public Person() {
+    }
+
+    public Person(String name, String location, Date birthDate) {
+        this.name = name;
+        this.location = location;
+        this.birthDate = birthDate;
+    }
+
+
+
+    public Person(int id, String name, String location, Date birthDate) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.birthDate = birthDate;
     }
 
     public int getId() {
@@ -20,21 +47,33 @@ public class Person {
         return name;
     }
 
-    public Person(int id, String name, int age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public String getLocation() {
+        return location;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", birthDate=" + birthDate +
+                '}';
     }
 }
