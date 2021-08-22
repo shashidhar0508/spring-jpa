@@ -12,7 +12,7 @@ public class Person {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String name;
     private String location;
     private Date birthDate;
@@ -28,18 +28,18 @@ public class Person {
 
 
 
-    public Person(int id, String name, String location, Date birthDate) {
+    public Person(Long id, String name, String location, Date birthDate) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.birthDate = birthDate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
