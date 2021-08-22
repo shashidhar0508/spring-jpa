@@ -1,0 +1,10 @@
+1. Without saving Technology table if we save TechnologyMaterial Table we will get below error
+=> org.hibernate.TransientPropertyValueException: object references an unsaved transient
+    instance - save the transient instance before flushing :
+    com.db.springjpa.entity.TechnologyMaterial.technology ->
+    com.db.springjpa.entity.Technology; nested exception is
+    java.lang.IllegalStateException: org.hibernate.TransientPropertyValueException:
+    object references an unsaved transient instance - save the transient instance before flushing
+     : com.db.springjpa.entity.TechnologyMaterial.technology ->
+     com.db.springjpa.entity.Technology
+=> If we use "cascade = CascadeType.ALL" we can overcome above error.

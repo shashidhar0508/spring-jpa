@@ -2,4 +2,18 @@ Tables:
 1. Student
 2. Institution
 3. Technology
-4. Instructor
+4. TechnologyMaterial
+5. Instructor
+
+Relationships:
+1. Technology with TechnologyMaterial(OneToOne Relationship)
+    => Without Technology we don't have TechnologyMaterial
+    => TechnologyMaterial table will have extra column "tech_id" referencing to Technology table.
+    => We can't save TechnologyMaterial table data without first saving Technology table data(1.Errors.txt)
+    => By using "cascade = CascadeType.ALL" we can overcome above issue.
+    => By using "fetch = FetchType.LAZY" we will get only parent class data,
+        If "fetch = FetchType.EAGER" it will load both Parent and Child class data
+    => If we write "OneToOne" mapping only in "TechnologyMaterial" table and execute "findAll" from
+        "Technology" table we will only get "Technology" data because "Technology" table doesn't
+        have any connection with "TechnologyMaterial" which is "Uni-directional" flow.
+    => For Bi-directional flow we need to use "mappedBy"

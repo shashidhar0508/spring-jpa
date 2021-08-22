@@ -8,7 +8,8 @@ import javax.persistence.*;
         uniqueConstraints = @UniqueConstraint(
                 name = "emailid_unique",
                 columnNames = "email_address"
-        )
+        ),
+        schema = "spring_jpa"
 )
 public class Student {
 
