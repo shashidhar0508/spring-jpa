@@ -47,4 +47,33 @@ class TechMaterialRepositoryTest {
         List<TechnologyMaterial> techMaterialRepositoryAll = techMaterialRepository.findAll();
         System.out.println("techMaterialRepositoryAll = " + techMaterialRepositoryAll);
     }
+
+    @Test
+    public void saveTechMaterialWithoutTech(){
+
+        // This method will throw an error, We can't save Technology without TechMaterial
+        // because we gave "optional=false" in mapping
+
+        TableHistory tableHistory = new TableHistory(
+                "shashidhar",
+                new Date(),
+                "shashidhar",
+                new Date()
+        );
+
+        Technology technology = new Technology(
+                "DSA1",
+                16,
+                tableHistory
+        );
+
+        TechnologyMaterial technologyMaterial = new TechnologyMaterial(
+                "www.google.com",
+//                technology,
+                tableHistory
+        );
+
+        TechnologyMaterial save = techMaterialRepository.save(technologyMaterial);
+        System.out.println("save = " + save);
+    }
 }

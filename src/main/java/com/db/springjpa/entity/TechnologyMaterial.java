@@ -21,7 +21,10 @@ public class TechnologyMaterial {
 
     @OneToOne(
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
+            optional = false    // Whenever we are saving "Technology" and the "TechnologyMaterial" is mandatory for it
+                                // Which means "Technology" can't be saved now without "TechnologyMaterial"
+                                // beDefault "optional" it is "True"
     )
     @JoinColumn(
             name = "tech_id",       // This is column name in TechnologyMaterial Table.
@@ -38,6 +41,11 @@ public class TechnologyMaterial {
     public TechnologyMaterial(String url, Technology technology, TableHistory tableHistory) {
         this.url = url;
         this.technology = technology;
+        this.tableHistory = tableHistory;
+    }
+
+    public TechnologyMaterial(String url, TableHistory tableHistory) {
+        this.url = url;
         this.tableHistory = tableHistory;
     }
 
