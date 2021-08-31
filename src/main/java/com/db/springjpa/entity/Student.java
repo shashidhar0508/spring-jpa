@@ -39,6 +39,11 @@ public class Student {
     public Student() {
     }
 
+    public Student(String name, String emailId) {
+        this.name = name;
+        this.emailId = emailId;
+    }
+
     public Student(String name, String emailId, TableHistory tableHistory) {
         this.name = name;
         this.emailId = emailId;

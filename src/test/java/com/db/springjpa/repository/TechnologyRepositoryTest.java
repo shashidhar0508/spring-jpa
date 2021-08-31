@@ -1,9 +1,6 @@
 package com.db.springjpa.repository;
 
-import com.db.springjpa.entity.Instructor;
-import com.db.springjpa.entity.TableHistory;
-import com.db.springjpa.entity.Technology;
-import com.db.springjpa.entity.TechnologyMaterial;
+import com.db.springjpa.entity.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -54,6 +51,19 @@ class TechnologyRepositoryTest {
 
         final Technology save = technologyRepository.save(python);
 
+        System.out.println("save = " + save);
+
+    }
+
+    @Test
+    public void saveTechnologyWithStudentAndInstructor() {
+        TableHistory tableHistory = new TableHistory("Shashidhar", new Date(), "Shashidhar", new Date());
+        Instructor instructor = new Instructor("Dennis", "Ritchie");
+        Student student = new Student("Shashidhar", "shashidhar@gmail.com");
+        Technology technology = new Technology("C", 8, instructor, tableHistory);
+        technology.addStudents(student);
+
+        final Technology save = technologyRepository.save(technology);
         System.out.println("save = " + save);
 
     }
