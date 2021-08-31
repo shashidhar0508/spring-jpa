@@ -22,9 +22,9 @@ public class TechnologyMaterial {
     @OneToOne(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            optional = false    // Whenever we are saving "Technology" and the "TechnologyMaterial" is mandatory for it
+            optional = false    // Whenever we are saving "Technology" the "TechnologyMaterial" is mandatory for it
                                 // Which means "Technology" can't be saved now without "TechnologyMaterial"
-                                // beDefault "optional" it is "True"
+                                // by Default, "optional" it is "True"
     )
     @JoinColumn(
             name = "tech_id",       // This is column name in TechnologyMaterial Table.

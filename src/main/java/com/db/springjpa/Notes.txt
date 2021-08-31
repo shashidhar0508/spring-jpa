@@ -17,3 +17,7 @@ Relationships:
         "Technology" table we will only get "Technology" data because "Technology" table doesn't
         have any connection with "TechnologyMaterial" which is "Uni-directional" flow.
     => For Bi-directional flow we need to use "mappedBy"
+    => By giving "optional = false" in "TechnologyMaterial" entity we are saying that we can't save
+        "TechnologyMaterial" without saving "Technology" in it. By default, optional is true.
+    => Instead of giving "OneToMany" in Instructor table it is recommended by JPA
+        to give "ManyToOne" in Technology table.

@@ -25,6 +25,17 @@ public class Technology {
     )
     private TechnologyMaterial technologyMaterial;
 
+    // Instead of giving "OneToMany" in Instructor table it is recommended by
+    // JPA to give "ManyToOne" in Technology table like this
+    @ManyToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "instructor_id",
+            referencedColumnName = "instructorId"
+    )
+    private Instructor instructor;
+
     @Embedded
     private TableHistory tableHistory;
 
@@ -34,6 +45,21 @@ public class Technology {
     public Technology(String name, Integer credit, TableHistory tableHistory) {
         this.name = name;
         this.credit = credit;
+        this.tableHistory = tableHistory;
+    }
+
+    public Technology(String name, Integer credit, Instructor instructor, TechnologyMaterial technologyMaterial, TableHistory tableHistory) {
+        this.name = name;
+        this.credit = credit;
+        this.instructor = instructor;
+        this.technologyMaterial = technologyMaterial;
+        this.tableHistory = tableHistory;
+    }
+
+    public Technology(String name, Integer credit, Instructor instructor, TableHistory tableHistory) {
+        this.name = name;
+        this.credit = credit;
+        this.instructor = instructor;
         this.tableHistory = tableHistory;
     }
 
@@ -75,6 +101,14 @@ public class Technology {
 
     public void setTechnologyMaterial(TechnologyMaterial technologyMaterial) {
         this.technologyMaterial = technologyMaterial;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 
     @Override

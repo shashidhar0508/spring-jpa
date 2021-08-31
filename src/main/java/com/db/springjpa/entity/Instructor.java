@@ -1,7 +1,6 @@
 package com.db.springjpa.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "tbl_instructor",schema = "spring_jpa")
@@ -23,7 +22,7 @@ public class Instructor {
 
     private String lastName;
 
-    @OneToMany(
+   /* @OneToMany(
             cascade = CascadeType.ALL
     )
     // Here a new column would be added in Technology table with column name as "instructor_id"
@@ -35,15 +34,22 @@ public class Instructor {
             name = "instructor_id",
             referencedColumnName ="instructorId"
     )
-    private List<Technology> technologies;
+    private List<Technology> technologies;*/
 
     public Instructor() {
     }
 
-    public Instructor(String firstName, String lastName, List<Technology> technologies) {
+//    public Instructor(String firstName, String lastName
+//            , List<Technology> technologies
+//    ) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.technologies = technologies;
+//    }
+
+    public Instructor(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.technologies = technologies;
     }
 
     public Long getInstructorId() {
@@ -70,13 +76,13 @@ public class Instructor {
         this.lastName = lastName;
     }
 
-    public List<Technology> getTechnologies() {
-        return technologies;
-    }
-
-    public void setTechnologies(List<Technology> technologies) {
-        this.technologies = technologies;
-    }
+//    public List<Technology> getTechnologies() {
+//        return technologies;
+//    }
+//
+//    public void setTechnologies(List<Technology> technologies) {
+//        this.technologies = technologies;
+//    }
 
     @Override
     public String toString() {
@@ -84,7 +90,7 @@ public class Instructor {
                 "instructorId=" + instructorId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", technologies=" + technologies +
+//                ", technologies=" + technologies +
                 '}';
     }
 }

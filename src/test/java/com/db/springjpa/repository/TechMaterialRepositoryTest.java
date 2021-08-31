@@ -53,6 +53,9 @@ class TechMaterialRepositoryTest {
 
         // This method will throw an error, We can't save Technology without TechMaterial
         // because we gave "optional=false" in mapping
+        // We will get below error
+        // not-null property references a null or transient value : com.db.springjpa.entity.TechnologyMaterial.technology;
+        // nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : com.db.springjpa.entity.TechnologyMaterial.technology
 
         TableHistory tableHistory = new TableHistory(
                 "shashidhar",
@@ -62,14 +65,14 @@ class TechMaterialRepositoryTest {
         );
 
         Technology technology = new Technology(
-                "DSA1",
-                16,
+                "DSA2",
+                17,
                 tableHistory
         );
 
         TechnologyMaterial technologyMaterial = new TechnologyMaterial(
                 "www.google.com",
-//                technology,
+                technology,
                 tableHistory
         );
 
